@@ -15,9 +15,11 @@ const ImageLinkForm = ({ onInputChange, onButtonSubmit }) => {
       </p>
       <div className="center">
         <div className="form center pa4 br3 shadow-5">
+          {/* Todo Form Validation */}
           <input
             className="f4 pa2 w-70 center"
             type="tex"
+            placeholder="enter a image url"
             onChange={onInputChange}
             onKeyUp={handleKeyPress}
           />
