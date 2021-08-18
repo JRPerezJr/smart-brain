@@ -10,8 +10,8 @@ export const handleRegistration = (email, password, name) => {
   })
     .then(response => response.json())
     .then(data => {
-      if (data.userId && data.success === 'true') {
-        return data;
+      if (data.id) {
+        console.log('Sending Data=> ', data);
       }
     })
     .catch(err => console.log(err));
