@@ -1,4 +1,5 @@
 import React from 'react';
+import '../Signin/Signin.css';
 
 class Register extends React.Component {
   constructor(props) {
@@ -23,13 +24,15 @@ class Register extends React.Component {
   };
 
   onSubmitSignIn = () => {
+    const { email, password, name } = this.state;
+
     fetch('http://localhost:3000/register', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        email: this.state.email,
-        password: this.state.password,
-        name: this.state.name,
+        email: email,
+        password: password,
+        name: name,
       }),
     })
       .then(response => response.json())
@@ -53,7 +56,7 @@ class Register extends React.Component {
                   Name
                 </label>
                 <input
-                  className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                  className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100 hover-black"
                   type="text"
                   name="name"
                   id="name"
@@ -65,7 +68,7 @@ class Register extends React.Component {
                   Email
                 </label>
                 <input
-                  className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                  className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100 hover-black"
                   type="email"
                   name="email-address"
                   id="email-address"
