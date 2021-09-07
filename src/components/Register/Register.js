@@ -41,10 +41,18 @@ class Register extends React.Component {
           this.props.loadUser(user);
           this.props.onRouteChange('home');
         }
-      });
+      })
+      .catch(err => Error('Failed to register', err));
+  };
+
+  handleKeyPress = event => {
+    if (event.keyCode === 13) {
+      this.onSubmitSignIn();
+    }
   };
 
   render() {
+    const { name, password, email } = this.state;
     return (
       <article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
         <main className="pa4 black-80">
@@ -61,6 +69,7 @@ class Register extends React.Component {
                   name="name"
                   id="name"
                   onChange={this.onNameChange}
+                  onKeyUp={this.handleKeyPress}
                 />
               </div>
               <div className="mt3">
@@ -73,6 +82,7 @@ class Register extends React.Component {
                   name="email-address"
                   id="email-address"
                   onChange={this.onEmailChange}
+                  onKeyUp={this.handleKeyPress}
                 />
               </div>
               <div className="mv3">
@@ -85,17 +95,20 @@ class Register extends React.Component {
                   name="password"
                   id="password"
                   onChange={this.onPasswordChange}
+                  onKeyUp={this.handleKeyPress}
                 />
               </div>
             </fieldset>
-            <div className="">
-              <input
-                onClick={this.onSubmitSignIn}
-                className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
-                type="submit"
-                value="Register"
-              />
-            </div>
+            {name.length > 0 && email.length > 0 && password.length > 0 && (
+              <div className="">
+                <input
+                  onClick={this.onSubmitSignIn}
+                  className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
+                  type="submit"
+                  value="Register"
+                />
+              </div>
+            )}
           </div>
         </main>
       </article>
